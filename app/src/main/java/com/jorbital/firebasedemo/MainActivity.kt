@@ -46,19 +46,25 @@ class MainActivity : ComponentActivity() {
 fun FirebaseDemoScreen(color: Color) {
     Scaffold(
         topBar = { TopAppBar(title = { Text("Firebase Demo") }) },
-        content = { Greeting("Feature Flag Test", color) }
-    )
+    ) {
+        Greeting("Feature Flag Test", color, it)
+    }
 }
 
 @Composable
-fun Greeting(name: String, color: Color) {
-    Box(Modifier.fillMaxSize()) {
+fun Greeting(name: String, color: Color, scaffoldPadding: PaddingValues) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(scaffoldPadding)
+    ) {
         Box(
             Modifier
                 .align(Alignment.Center)
                 .background(color)
                 .fillMaxWidth()
-                .height(100.dp))
+                .height(100.dp)
+        )
         Text(
             text = "Hello $name!",
             color = Color.White,
